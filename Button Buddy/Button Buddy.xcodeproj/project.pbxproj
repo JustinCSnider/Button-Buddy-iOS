@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		CC4CBE49263EE28E00240603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CBE48263EE28E00240603 /* AppDelegate.swift */; };
 		CC4CBE4B263EE28E00240603 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CBE4A263EE28E00240603 /* SceneDelegate.swift */; };
-		CC4CBE4D263EE28E00240603 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CBE4C263EE28E00240603 /* ViewController.swift */; };
+		CC4CBE4D263EE28E00240603 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CBE4C263EE28E00240603 /* MainViewController.swift */; };
 		CC4CBE50263EE28E00240603 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4CBE4E263EE28E00240603 /* Main.storyboard */; };
 		CC4CBE52263EE28F00240603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC4CBE51263EE28F00240603 /* Assets.xcassets */; };
 		CC4CBE55263EE28F00240603 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4CBE53263EE28F00240603 /* LaunchScreen.storyboard */; };
+		CC4CBE61263EE40D00240603 /* BleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CBE60263EE40D00240603 /* BleTableViewCell.swift */; };
+		CC4CBE64263EE78F00240603 /* ButtonPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CBE63263EE78F00240603 /* ButtonPeripheral.swift */; };
+		CC4CBE66263EEB4200240603 /* ButtonSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CBE65263EEB4200240603 /* ButtonSettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CC4CBE45263EE28E00240603 /* Button Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Button Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4CBE48263EE28E00240603 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC4CBE4A263EE28E00240603 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CC4CBE4C263EE28E00240603 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC4CBE4C263EE28E00240603 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CC4CBE4F263EE28E00240603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC4CBE51263EE28F00240603 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC4CBE54263EE28F00240603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC4CBE56263EE28F00240603 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC4CBE60263EE40D00240603 /* BleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleTableViewCell.swift; sourceTree = "<group>"; };
+		CC4CBE63263EE78F00240603 /* ButtonPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPeripheral.swift; sourceTree = "<group>"; };
+		CC4CBE65263EEB4200240603 /* ButtonSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				CC4CBE51263EE28F00240603 /* Assets.xcassets */,
+				CC4CBE62263EE77700240603 /* Models */,
+				CC4CBE5F263EE3F000240603 /* Views */,
 				CC4CBE5C263EE2F600240603 /* ViewControllers */,
 				CC4CBE5E263EE33B00240603 /* Storyboards */,
 				CC4CBE5D263EE31A00240603 /* Supporting Files */,
@@ -67,7 +75,8 @@
 		CC4CBE5C263EE2F600240603 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CC4CBE4C263EE28E00240603 /* ViewController.swift */,
+				CC4CBE4C263EE28E00240603 /* MainViewController.swift */,
+				CC4CBE65263EEB4200240603 /* ButtonSettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -89,6 +98,22 @@
 				CC4CBE53263EE28F00240603 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CC4CBE5F263EE3F000240603 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC4CBE60263EE40D00240603 /* BleTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CC4CBE62263EE77700240603 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC4CBE63263EE78F00240603 /* ButtonPeripheral.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,9 +186,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC4CBE4D263EE28E00240603 /* ViewController.swift in Sources */,
+				CC4CBE4D263EE28E00240603 /* MainViewController.swift in Sources */,
+				CC4CBE66263EEB4200240603 /* ButtonSettingsViewController.swift in Sources */,
+				CC4CBE64263EE78F00240603 /* ButtonPeripheral.swift in Sources */,
 				CC4CBE49263EE28E00240603 /* AppDelegate.swift in Sources */,
 				CC4CBE4B263EE28E00240603 /* SceneDelegate.swift in Sources */,
+				CC4CBE61263EE40D00240603 /* BleTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +340,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6JHB3FKAQY;
-				INFOPLIST_FILE = "Button Buddy/Info.plist";
+				INFOPLIST_FILE = "Button Buddy/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -331,7 +359,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6JHB3FKAQY;
-				INFOPLIST_FILE = "Button Buddy/Info.plist";
+				INFOPLIST_FILE = "Button Buddy/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
