@@ -12,37 +12,27 @@ class ButtonSettingsViewController: UIViewController {
     
     // MARK: - Properties
     
+    private let pickerValues: [Int] = [5, 30, 60, 90, 120]
+    
     private let timerPrefix = "!T"
     
     private var centralManager: CBCentralManager!
     private var peripheral: CBPeripheral!
     
-    // Characteristics
+    // MARK: Characteristics
+    
     private var txChar: CBCharacteristic?
     private var rxChar: CBCharacteristic?
     
     // MARK: - IBOutlets
     
-    @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var timerSlider: UISlider!
+    @IBOutlet weak var timePicker: UIPickerView!
     
     // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
         centralManager = CBCentralManager(delegate: self, queue: nil)
-    }
-    
-    // MARK: - IBActions
-    
-    @IBAction func timerSliderValueChanged(_ sender: UISlider) {
-        timerLabel.text = "Timer: \(round(sender.value))"
-        var data = Data()
-        let slider: UInt8 = UInt8(round(sender.value))
-        data.append(timerPrefix.data(using: .utf8)!)
-        data.append(slider)
-        appendCRC(&data)
-        peripheral.writeValue(data, for: txChar!, type: .withoutResponse)
     }
     
     // MARK: - Helper Functions
@@ -62,12 +52,6 @@ class ButtonSettingsViewController: UIViewController {
         crc = ~crc
         
         data.append(crc)
-    }
-    
-    // MARK: - Setup Functions
-    
-    private func setupViews() {
-        timerLabel.text = "Timer: \(timerSlider.value)"
     }
 
 }
@@ -126,7 +110,7 @@ extension ButtonSettingsViewController: CBPeripheralDelegate, CBCentralManagerDe
                 if characteristic.uuid == ButtonPeripheral.txCharacteristicUUID {
                     print("TX characteristic found")
                     txChar = characteristic
-                    timerSlider.isEnabled = true
+                    timePicker.isUserInteractionEnabled = true
                 } else if characteristic.uuid == ButtonPeripheral.rxCharacteristicUUID {
                     print("RX characteristic found")
                     rxChar = characteristic
@@ -134,4 +118,31 @@ extension ButtonSettingsViewController: CBPeripheralDelegate, CBCentralManagerDe
             }
         }
     }
+}
+
+// MARK: - UIPickerViewDelegate, UIPickerViewDataSource
+
+extension ButtonSettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerValues.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(pickerValues[row])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var data = Data()
+        let countDownDuration: UInt8 = UInt8(pickerValues[row])
+        data.append(timerPrefix.data(using: .utf8)!)
+        data.append(countDownDuration)
+        appendCRC(&data)
+        peripheral.writeValue(data, for: txChar!, type: .withoutResponse)
+    }
+    
 }

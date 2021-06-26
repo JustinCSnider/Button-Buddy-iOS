@@ -75,37 +75,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="MeP-gj-uBY">
-                                <rect key="frame" x="122" y="407.5" width="170" height="81.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer: 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ks8-lR-dfo">
-                                        <rect key="frame" x="50" y="0.0" width="70.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="10" maxValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="Re3-Ur-jcM">
-                                        <rect key="frame" x="-2" y="51.5" width="174" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="170" id="kos-ge-inT"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="timerSliderValueChanged:" destination="K05-Vn-kQ0" eventType="valueChanged" id="Q2u-Md-9Fq"/>
-                                        </connections>
-                                    </slider>
-                                </subviews>
-                            </stackView>
+                            <pickerView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xkf-au-n5F">
+                                <rect key="frame" x="0.0" y="340" width="414" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="K05-Vn-kQ0" id="D0u-4d-geI"/>
+                                    <outlet property="delegate" destination="K05-Vn-kQ0" id="tFn-1J-979"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wNY-PL-VNK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MeP-gj-uBY" firstAttribute="centerX" secondItem="HTi-6G-Kz0" secondAttribute="centerX" id="DKj-Hd-tBQ"/>
-                            <constraint firstItem="MeP-gj-uBY" firstAttribute="centerY" secondItem="HTi-6G-Kz0" secondAttribute="centerY" id="pkU-U8-EE2"/>
+                            <constraint firstItem="xkf-au-n5F" firstAttribute="trailing" secondItem="wNY-PL-VNK" secondAttribute="trailing" id="3vS-XK-vr7"/>
+                            <constraint firstItem="xkf-au-n5F" firstAttribute="centerY" secondItem="HTi-6G-Kz0" secondAttribute="centerY" id="J36-Ki-IWt"/>
+                            <constraint firstItem="xkf-au-n5F" firstAttribute="leading" secondItem="wNY-PL-VNK" secondAttribute="leading" id="UF7-Zy-rrn"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="timerLabel" destination="ks8-lR-dfo" id="Kew-6G-gDm"/>
-                        <outlet property="timerSlider" destination="Re3-Ur-jcM" id="n9L-cm-Re2"/>
+                        <outlet property="timePicker" destination="xkf-au-n5F" id="LyI-tH-rHU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akG-Z1-bel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
