@@ -12,12 +12,11 @@ class ButtonSettingsViewController: UIViewController {
     
     // MARK: - Properties
     
+    var buttonBuddy: ButtonBuddy?
+    
     private let pickerValues: [Int] = [5, 30, 60, 90, 120]
     
     private let timerPrefix = "!T"
-    
-    private var centralManager: CBCentralManager!
-    private var peripheral: CBPeripheral!
     
     // MARK: Characteristics
     
@@ -26,14 +25,27 @@ class ButtonSettingsViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timePicker: UIPickerView!
     
     // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        centralManager = CBCentralManager(delegate: self, queue: nil)
+        setupViews()
+        guard let peripheral = buttonBuddy?.peripheral else { return }
+        peripheral.delegate = self
+        BluetoothService.shared.centralManager.connect(peripheral, options: nil)
     }
+    
+    // MARK: - IBActions
+    
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        guard let navigationController = navigationController else { return }
+        navigationController.popViewController(animated: true)
+    }
+    
     
     // MARK: - Helper Functions
     
@@ -53,39 +65,21 @@ class ButtonSettingsViewController: UIViewController {
         
         data.append(crc)
     }
+    
+    // MARK: - Setup Functions
+    
+    private func setupViews() {
+        titleLabel.text = buttonBuddy?.peripheral?.name
+    }
 
 }
 
-// MARK: - CBPeripheralDelegate, CBCentralManagerDelegate
+// MARK: - CBPeripheralDelegate
 
-extension ButtonSettingsViewController: CBPeripheralDelegate, CBCentralManagerDelegate {
-    
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        print("Central state update")
-        if central.state != .poweredOn {
-            print("Central is not powered on")
-        } else {
-            print("Central scanning for", ButtonPeripheral.buttonUARTServiceUUID);
-            centralManager.scanForPeripherals(withServices: [ButtonPeripheral.buttonUARTServiceUUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey : true])
-        }
-    }
-    
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-
-        // We've found it so stop scan
-        self.centralManager.stopScan()
-
-        // Copy the peripheral instance
-        self.peripheral = peripheral
-        self.peripheral.delegate = self
-
-        // Connect!
-        self.centralManager.connect(self.peripheral, options: nil)
-
-    }
+extension ButtonSettingsViewController: CBPeripheralDelegate {
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        if peripheral == self.peripheral {
+        if peripheral == buttonBuddy?.peripheral {
             print("Connected to your Button Board")
             peripheral.discoverServices([ButtonPeripheral.buttonUARTServiceUUID])
         }
@@ -137,6 +131,7 @@ extension ButtonSettingsViewController: UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let peripheral = buttonBuddy?.peripheral else { return }
         var data = Data()
         let countDownDuration: UInt8 = UInt8(pickerValues[row])
         data.append(timerPrefix.data(using: .utf8)!)

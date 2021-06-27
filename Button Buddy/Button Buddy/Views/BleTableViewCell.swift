@@ -9,10 +9,13 @@ import UIKit
 
 class BleTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
+    
+    var buttonBuddy: ButtonBuddy?
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var nameLabel: UILabel!
-    
 
     // MARK: - Overrides
     

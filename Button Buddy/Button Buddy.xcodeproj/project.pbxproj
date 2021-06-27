@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC0EBB222688CCBB00F798C0 /* BluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0EBB212688CCBB00F798C0 /* BluetoothService.swift */; };
+		CC0EBB242688D15500F798C0 /* ButtonBuddy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0EBB232688D15500F798C0 /* ButtonBuddy.swift */; };
 		CC4CBE49263EE28E00240603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CBE48263EE28E00240603 /* AppDelegate.swift */; };
 		CC4CBE4B263EE28E00240603 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CBE4A263EE28E00240603 /* SceneDelegate.swift */; };
 		CC4CBE4D263EE28E00240603 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CBE4C263EE28E00240603 /* MainViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC0EBB212688CCBB00F798C0 /* BluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothService.swift; sourceTree = "<group>"; };
+		CC0EBB232688D15500F798C0 /* ButtonBuddy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBuddy.swift; sourceTree = "<group>"; };
 		CC4CBE45263EE28E00240603 /* Button Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Button Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4CBE48263EE28E00240603 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC4CBE4A263EE28E00240603 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC0EBB202688CCA700F798C0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CC0EBB212688CCBB00F798C0 /* BluetoothService.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		CC4CBE3C263EE28E00240603 = {
 			isa = PBXGroup;
 			children = (
@@ -62,7 +74,7 @@
 		CC4CBE47263EE28E00240603 /* Button Buddy */ = {
 			isa = PBXGroup;
 			children = (
-				CC4CBE51263EE28F00240603 /* Assets.xcassets */,
+				CC0EBB202688CCA700F798C0 /* Managers */,
 				CC4CBE62263EE77700240603 /* Models */,
 				CC4CBE5F263EE3F000240603 /* Views */,
 				CC4CBE5C263EE2F600240603 /* ViewControllers */,
@@ -87,6 +99,7 @@
 				CC4CBE48263EE28E00240603 /* AppDelegate.swift */,
 				CC4CBE4A263EE28E00240603 /* SceneDelegate.swift */,
 				CC4CBE56263EE28F00240603 /* Info.plist */,
+				CC4CBE51263EE28F00240603 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -112,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				CC4CBE63263EE78F00240603 /* ButtonPeripheral.swift */,
+				CC0EBB232688D15500F798C0 /* ButtonBuddy.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,6 +206,8 @@
 				CC4CBE49263EE28E00240603 /* AppDelegate.swift in Sources */,
 				CC4CBE4B263EE28E00240603 /* SceneDelegate.swift in Sources */,
 				CC4CBE61263EE40D00240603 /* BleTableViewCell.swift in Sources */,
+				CC0EBB242688D15500F798C0 /* ButtonBuddy.swift in Sources */,
+				CC0EBB222688CCBB00F798C0 /* BluetoothService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
