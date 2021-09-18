@@ -50,7 +50,9 @@ extension BluetoothService: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
 
-        // Copy the peripheral instance
-        buddies.append(ButtonBuddy(peripheral: peripheral))
+        if !buddies.contains(where: { $0.peripheral?.identifier == peripheral.identifier}) {
+            // Copy the peripheral instance
+            buddies.append(ButtonBuddy(peripheral: peripheral))
+        }
     }
 }
