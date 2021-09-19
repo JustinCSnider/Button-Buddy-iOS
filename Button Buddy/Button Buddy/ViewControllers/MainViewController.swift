@@ -44,6 +44,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let navigationController = navigationController else { return }
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.isSelected = false
+        
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ButtonSettingsVC") as! ButtonSettingsViewController
         
         vc.buttonBuddy = BluetoothService.shared.buddies[indexPath.row]

@@ -43,6 +43,9 @@ class ButtonSettingsViewController: UIViewController {
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
         guard let navigationController = navigationController else { return }
+        if let peripheral = buttonBuddy?.peripheral {
+            BluetoothService.shared.centralManager.cancelPeripheralConnection(peripheral)
+        }
         navigationController.popViewController(animated: true)
     }
     
@@ -77,13 +80,6 @@ class ButtonSettingsViewController: UIViewController {
 // MARK: - CBPeripheralDelegate
 
 extension ButtonSettingsViewController: CBPeripheralDelegate {
-
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        if peripheral == buttonBuddy?.peripheral {
-            print("Connected to your Button Board")
-            peripheral.discoverServices([ButtonPeripheral.buttonUARTServiceUUID])
-        }
-    }
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let services = peripheral.services {

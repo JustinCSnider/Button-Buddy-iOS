@@ -38,6 +38,11 @@ class BluetoothService: NSObject {
 
 extension BluetoothService: CBCentralManagerDelegate {
     
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        print("Connected to your Button Board")
+        peripheral.discoverServices([ButtonPeripheral.buttonUARTServiceUUID])
+    }
+    
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("Central state update")
         if central.state != .poweredOn {

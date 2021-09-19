@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HDf-wC-oOQ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BleCell" id="vtG-ah-gho" customClass="BleTableViewCell" customModule="Button_Buddy" customModuleProvider="target">
@@ -50,14 +50,44 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="BXb-3c-hQA"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oJ-6y-Buk">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buddies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Od3-Kq-abw">
+                                        <rect key="frame" x="170" y="18.5" width="74" height="23"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2C2-6e-F6U">
+                                        <rect key="frame" x="0.0" y="59" width="414" height="1"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="5az-wT-brf"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="2C2-6e-F6U" firstAttribute="leading" secondItem="3oJ-6y-Buk" secondAttribute="leading" id="4ku-Dz-K2V"/>
+                                    <constraint firstAttribute="bottom" secondItem="2C2-6e-F6U" secondAttribute="bottom" id="Gmr-yx-7fS"/>
+                                    <constraint firstItem="Od3-Kq-abw" firstAttribute="centerX" secondItem="3oJ-6y-Buk" secondAttribute="centerX" id="JL4-Tu-9Nc"/>
+                                    <constraint firstAttribute="height" constant="60" id="OW2-k0-eSj"/>
+                                    <constraint firstItem="Od3-Kq-abw" firstAttribute="centerY" secondItem="3oJ-6y-Buk" secondAttribute="centerY" id="gPQ-jF-SO2"/>
+                                    <constraint firstAttribute="trailing" secondItem="2C2-6e-F6U" secondAttribute="trailing" id="wuV-U5-lNF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HDf-wC-oOQ" secondAttribute="trailing" id="5GG-XS-8gQ"/>
+                            <constraint firstItem="3oJ-6y-Buk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7QS-65-rcZ"/>
                             <constraint firstItem="HDf-wC-oOQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DZw-9g-pH7"/>
+                            <constraint firstItem="HDf-wC-oOQ" firstAttribute="top" secondItem="3oJ-6y-Buk" secondAttribute="bottom" id="QHv-cU-8KL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HDf-wC-oOQ" secondAttribute="bottom" id="XEe-lh-f6J"/>
-                            <constraint firstItem="HDf-wC-oOQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gd8-9S-5uo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3oJ-6y-Buk" secondAttribute="trailing" id="YO0-Zx-rsI"/>
+                            <constraint firstItem="3oJ-6y-Buk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ayh-HB-EbX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7mW-4E-e67"/>
@@ -88,7 +118,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxq-ih-oQa">
-                                        <rect key="frame" x="20" y="19" width="52.5" height="22"/>
+                                        <rect key="frame" x="20" y="19" width="53" height="22"/>
                                         <state key="normal" title="Back" image="chevron.left" catalog="system">
                                             <color key="titleColor" name="AccentColor"/>
                                         </state>
@@ -157,6 +187,9 @@
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
